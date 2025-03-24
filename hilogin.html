@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 60px auto;
+            padding: 30px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-header {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-control {
+            height: 45px;
+        }
+
+        .btn-login {
+            width: 100%;
+            height: 45px;
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn-login:hover {
+            background-color: #0056b3;
+        }
+
+        .text-center {
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header
+            class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            <div class="col-md-3 mb-2 mb-md-0">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <img src="WhatsApp_Image_2025-03-01_at_13.15.09_17987284-removebg-preview.png" alt="Logo"
+                        class="img-fluid" style="max-height:100px; width: auto;">
+                </a>
+            </div>
+
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="hindistpage.html" class="nav-link px-2 link-secondary">होम</a></li>
+                <li><a href="hindijobpage.html" class="nav-link px-2">नौकरी अपडेट</a></li>
+                <li><a href="hindigovtschems.html" class="nav-link px-2">सरकारी योजनाएं</a></li>
+                <li><a href="hindisub.html" class="nav-link px-2">सब्सिडी</a></li>
+                <li><a href="ABOUT.HTML" class="nav-link px-2">हमारे बारे में</a></li>
+            </ul>
+
+            <div class="col-md-3 text-end">
+                <a href="hindisiguppage.html" style="text-decoration: none;">
+                    <button type="button" class="btn btn-outline-primary me-2">साइन अप</button>
+                </a>
+            </div>
+        </header>
+    </div>
+
+    <div class="container">
+        <div class="login-container">
+            <div class="login-header">प्रजा फोकस में लॉगिन करें</div>
+
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="phoneNumber" class="form-label">फ़ोन नंबर</label>
+                    <input type="tel" class="form-control" id="phoneNumber" placeholder="अपना फ़ोन नंबर दर्ज करें" required>
+                </div>
+
+                <button type="button" class="btn btn-login" onclick="handleLogin()">लॉगिन करें</button>
+            </form>
+
+            <p class="text-center text-muted">जारी रखने पर, आप हमारी नियम और शर्तों से सहमत हैं।</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper (for dropdowns, etc.) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            localStorage.setItem('selectedLanguage', 'hi');
+        });
+
+        async function handleLogin() {
+            const phoneNumber = document.getElementById('phoneNumber').value;
+
+            if (!phoneNumber || !/^\d{10}$/.test(phoneNumber)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'त्रुटि',
+                    text: 'कृपया मान्य मोबाइल नंबर दर्ज करें',
+                    confirmButtonText: 'ठीक है'
+                });
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:5008/api/users/login', {  // Updated API endpoint
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept-Language': 'hi'
+                    },
+                    body: JSON.stringify({ phoneNumber })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    localStorage.setItem('userToken', data.token);
+                    window.location.href = 'hindistpage.html';
+                } else {
+                    throw new Error(data.message || 'लॉगिन विफल रहा');
+                }
+            } catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'त्रुटि',
+                    text: error.message,
+                    confirmButtonText: 'ठीक है'
+                });
+            }
+        }
+    </script>
+
+<footer class="pt-5 pb-3" style="background-color: transparent;">
+    <div class="container">
+      <div class="row">
+        <!-- Contact Section -->
+        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 text-center text-md-start">
+          <h5 class="text-uppercase mb-3" style="color: black;">Contact Us</h5>
+          <p class="mb-1 contact-item">
+            <i class="fas fa-phone-alt me-2"></i>
+            <a href="tel:+919876543210" style="text-decoration: none; color: black;">+91 98765 43210</a>
+          </p>
+          <p class="mb-0 contact-item">
+            <i class="fas fa-envelope me-2"></i>
+            <a href="mailto:info@prajafocus.com" style="text-decoration: none; color: black;">info@prajafocus.com</a>
+          </p>
+        </div>
+  
+        <!-- Social Media -->
+        <div class="col-lg-4 col-md-6 text-center text-md-start mb-4 mb-lg-0">
+          <h5 class="text-uppercase mb-3" style="color: black;">Follow Us</h5>
+          <a href="#" class="social-link me-3">
+            <img src="facebook-color-off.svg" alt="Facebook">
+          </a>
+          <a href="#" class="social-link me-3">
+            <img src="x-twitter-color-off.svg" alt="Twitter">
+          </a>
+          <a href="#" class="social-link me-3">
+            <img src="instagram-color-off.svg" alt="Instagram">
+          </a>
+        </div>
+  
+        <!-- Copyright -->
+        <div class="col-12 text-center border-top pt-3 mt-4">
+          <p class="mb-0" style="font-size: 14px; color: black;">
+            © 2025 Praja Focus. All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous">
+
+</body>
+</html>

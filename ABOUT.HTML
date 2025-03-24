@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Praja Focus</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .team-member {
+            transition: transform 0.3s ease;
+        }
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        .mission-card {
+            border-left: 4px solid #007bff;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+        .mission-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .value-icon {
+            font-size: 2.5rem;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header (reuse your existing header) -->
+    <!-- Header section -->
+    <div class="container">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            <div class="col-md-3 mb-2 mb-md-0">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none">
+                    <img src="WhatsApp_Image_2025-03-01_at_13.15.09_17987284-removebg-preview.png" 
+                         alt="Logo" 
+                         class="img-fluid" 
+                         style="max-height: 80px; width: auto; object-fit: contain;">
+                </a>
+            </div>
+
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="index.html" class="nav-link px-2">Home</a></li>
+                <li><a href="JOB.HTML" class="nav-link px-2">Job Update</a></li>
+                <li><a href="GOVT SC.HTML" class="nav-link px-2">Govt Schemes</a></li>
+                <li><a href="SUBS.HTML" class="nav-link px-2">Subsidy</a></li>
+                <li><a href="ABOUT.HTML" class="nav-link px-2 link-secondary">About</a></li>
+            </ul>
+
+            <div class="col-md-3 text-end" id="authButtons">
+                <a href="./enlogin.html" style="text-decoration: none;">
+                    <button type="button" class="btn btn-outline-primary me-2">Login</button>
+                </a>
+                <a href="signup.html" style="text-decoration: none;">
+                    <button type="button" class="btn btn-outline-primary">Signup</button>
+                </a>
+            </div>
+        </header>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">Empowering Communities Through Information</h1>
+                <p class="lead mb-4">At Praja Focus, we believe in the power of information to transform lives. Our platform bridges the gap between government initiatives and citizens, ensuring everyone has access to opportunities that can shape their future.</p>
+            </div>
+            <div class="col-lg-6 d-flex justify-content-center">
+                <img src="goin up.png" 
+                     alt="About Us" 
+                     class="img-fluid" 
+                     style="max-height: 400px; width: auto; object-fit: contain;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Mission & Vision -->
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="p-4 mission-card rounded">
+                    <h3 class="fw-bold mb-3">Our Mission</h3>
+                    <p>To democratize access to essential information about government schemes, job opportunities, and subsidies, enabling every citizen to make informed decisions for their growth and prosperity.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="p-4 mission-card rounded">
+                    <h3 class="fw-bold mb-3">Our Vision</h3>
+                    <p>To become the most trusted platform for government-related information, creating a more informed and empowered society where every citizen can access and benefit from available opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Our Values -->
+    <div class="container py-5">
+        <h2 class="text-center mb-5">Our Core Values</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="text-center">
+                    <div class="value-icon mb-3">🎯</div>
+                    <h4>Accuracy</h4>
+                    <p>We ensure all information is verified and up-to-date</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <div class="value-icon mb-3">🤝</div>
+                    <h4>Accessibility</h4>
+                    <p>Making information available in multiple languages</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <div class="value-icon mb-3">⚡</div>
+                    <h4>Timeliness</h4>
+                    <p>Delivering updates promptly when they matter most</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose Us -->
+    <div class="container py-5 bg-light rounded-4">
+        <h2 class="text-center mb-5">Why Choose Praja Focus?</h2>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="text-center">
+                    <div class="value-icon mb-3">👥</div>
+                    <h4 class="text-primary">Growing Community</h4>
+                    <p>Join our thriving community of informed citizens making better decisions</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="text-center">
+                    <div class="value-icon mb-3">📋</div>
+                    <h4 class="text-success">Comprehensive Coverage</h4>
+                    <p>Extensive database of government schemes updated regularly</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="text-center">
+                    <div class="value-icon mb-3">💼</div>
+                    <h4 class="text-info">Career Opportunities</h4>
+                    <p>Fresh job updates across various sectors and positions</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="text-center">
+                    <div class="value-icon mb-3">🌐</div>
+                    <h4 class="text-warning">Multilingual Support</h4>
+                    <p>Information accessible in your preferred language</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose Us section ends -->
+
+        <footer class="pt-5 pb-3" style="background-color: transparent;">
+            <div class="container">
+                <div class="row">
+                    <!-- Contact Section -->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center text-md-start">
+                        <h5 class="text-uppercase mb-3" style="color: black;">Contact Us</h5>
+                        <p class="mb-1 contact-item">
+                            <i class="fas fa-phone-alt me-2"></i>
+                            <a href="tel:+919876543210" style="text-decoration: none; color: black;">+91 98765 43210</a>
+                        </p>
+                        <p class="mb-0 contact-item">
+                            <i class="fas fa-envelope me-2"></i>
+                            <a href="mailto:support@prajafocus.info" style="text-decoration: none; color: black;">support@prajafocus.info</a>
+                        </p>
+                    </div>
+            
+                    <!-- Social Media -->
+                    <div class="col-lg-3 col-md-6 text-center text-md-start mb-4 mb-lg-0">
+                        <h5 class="text-uppercase mb-3" style="color: black;">Follow Us</h5>
+                        <a href="#" class="social-link me-3">
+                            <img src="facebook-color-off.svg" alt="Facebook">
+                        </a>
+                        <a href="#" class="social-link me-3">
+                            <img src="x-twitter-color-off.svg" alt="Twitter">
+                        </a>
+                        <a href="#" class="social-link me-3">
+                            <img src="instagram-color-off.svg" alt="Instagram">
+                        </a>
+                    </div>
+
+                    <!-- Policies -->
+                    <div class="col-lg-3 col-md-6 text-center text-md-start mb-4 mb-lg-0">
+                        <h5 class="text-uppercase mb-3" style="color: black;">Policies</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="privacy-policy.html" style="text-decoration: none; color: black;">Privacy Policy</a></li>
+                            <li class="mb-2"><a href="terms-of-use.html" style="text-decoration: none; color: black;">Terms of Use</a></li>
+                            <li class="mb-2"><a href="disclaimer.html" style="text-decoration: none; color: black;">Disclaimer</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Additional Policies -->
+                    <div class="col-lg-3 col-md-6 text-center text-md-start mb-4 mb-lg-0">
+                        <h5 class="text-uppercase mb-3" style="color: black;">Additional Info</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="shipping-delivery.html" style="text-decoration: none; color: black;">Shipping & Delivery Policy</a></li>
+                            <li class="mb-2"><a href="refund-cancellation.html" style="text-decoration: none; color: black;">Refund & Cancellation Policy</a></li>
+                        </ul>
+                    </div>
+            
+                    <!-- Copyright -->
+                    <div class="col-12 text-center border-top pt-3 mt-4">
+                        <p class="mb-0" style="font-size: 14px; color: black;">
+                            © 2025 Praja Focus. All Rights Reserved.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/auth.js"></script>
+    </body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Praja Focus</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+    .px-4 pt-5 my-5 text-center border-bottom {
+      padding-top: 10px;
+    }
+
+
+    /* Card hover effect */
+    .pricing-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #fff;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Subtle gradient border on hover */
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #007bff, #28a745, #ffc107);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .pricing-card:hover::before {
+      opacity: 1;
+    }
+
+    /* Button hover effect */
+    .pricing-card button {
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .pricing-card button:hover {
+      transform: translateY(-3px);
+    }
+
+    /* Input hover/focus for a premium feel */
+    .pricing-card input {
+      border: 1px solid #ddd;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .pricing-card input:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+      <div class="col-md-3 mb-2 mb-md-0">
+
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <img src="WhatsApp_Image_2025-03-01_at_13.15.09_17987284-removebg-preview.png" alt="Logo" class="img-fluid"
+            style="max-height:100px; width: auto;">
+        </a>
+
+      </div>
+
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="kannadajobpage.html" class="nav-link px-2">ಉದ್ಯೋಗ زಮಾಹಿತಿ</a></li>
+        <li><a href="kannadagovtsc.html" class="nav-link px-2">ಸರಕಾರಿ ಯೋಜನೆಗಳು</a></li>
+        <li><a href="kannadasub.html" class="nav-link px-2">ಅನುದಾನ</a></li>
+        <li><a href="kannadaabout.html" class="nav-link px-2">ಬಗ್ಗೆ</a></li>
+      </ul>
+
+      <!-- Replace the auth buttons section with this -->
+      <!-- Auth buttons section -->
+      <div class="col-md-3 text-end" id="authButtons">
+        <a href="knlogin.html" style="text-decoration: none;">
+          <button type="button" class="btn btn-outline-primary me-2">ಲಾಗಿನ್</button>
+        </a>
+        <a href="knsignup.html" style="text-decoration: none;">
+          <button type="button" class="btn btn-outline-primary">ಸೈನ್ ಅಪ್</button>
+        </a>
+      </div>
+
+      <!-- Logged in user section (initially hidden) -->
+      <div class="col-md-3 text-end d-none" id="userInfo">
+        <span class="me-2 text-primary" id="userName" style="font-weight: bold;"></span>
+        <button type="button" class="btn btn-outline-danger" onclick="handleLogout()">ಲಾಗ್ ಔಟ್</button>
+      </div>
+
+      <!-- Add this new section for logged in user (initially hidden) -->
+      <div class="col-md-3 text-end d-none" id="userInfo">
+        <span class="me-2 text-primary" id="userName" style="font-weight: bold;"></span>
+        <button type="button" class="btn btn-outline-danger" onclick="handleLogout()">ಲಾಗ್ ಔಟ್</button>
+      </div>
+
+      <!-- Add this script before closing body tag -->
+      <!-- Update the script section -->
+            
+    </header>
+  </div>
+
+
+  <div class="container-fluid bg-dark text-white py-1" style="font-size: 14px;">
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex align-items-center">
+          <strong class="me-2">ತಾಜಾ ನವೀಕರಣ:</strong>
+          <marquee behavior="scroll" direction="left" scrollamount="5" style="padding: 0; margin: 0; height: 20px;">
+            📢 ಸರ್ಕಾರವು ರೈತರಿಗೆ ಹೊಸ ಅನುದಾನ ಯೋಜನೆಗಳನ್ನು ಬಿಡುಗಡೆ ಮಾಡಿದೆ | 🚨 ಇತ್ತೀಚಿನ ಉದ್ಯೋಗ ನವೀಕರಣಗಳಿಗೆ ಈಗಲೇ ಅರ್ಜಿ
+            ಸಲ್ಲಿಸಿ |
+            💡 ನಮ್ಮ ಪ್ರಾಯೋಜಿತ ಜಾಹೀರಾತುಗಳೊಂದಿಗೆ ನಿಮ್ಮ ವ್ಯವಹಾರವನ್ನು ಉತ್ತೇಜಿಸಿ | ✅ ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ.
+          </marquee>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="goin up.png" alt="" width="150px" height="120">
+    <h1 class="display-5 fw-bold text-body-emphasis">ಜಾಗೃತಿಯ ಮಹತ್ವ </h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">**ಪ್ರಜಾ ಫೋಕಸ್** ಎಂಬುದು ಸಮುದಾಯಗಳಿಗೆ ಶಕ್ತಿಯುತ ಮಾಹಿತಿ ನೀಡುವ ಒಂದು ವೇದಿಕೆಯಾಗಿದ್ದು, ನಾವು ನಿಮಗೆ
+        **ಸರಕಾರಿ ಯೋಜನೆಗಳು**, **ಉದ್ಯೋಗಾವಕಾಶಗಳು** ಮತ್ತು **ಅನುದಾನಗಳು** ಕುರಿತ **ಸುದ್ದಿಗಳನ್ನು** ನವೀಕರಿಸಲು ಸೇವೆ ನೀಡುತ್ತೇವೆ.
+        ನಮ್ಮ ಉದ್ದೇಶವು ನಾಗರಿಕರನ್ನು **ಮುಖ್ಯ ಮಾಹಿತಿಯೊಂದಿಗೆ** ಸಂಪರ್ಕಿಸಲು ಮತ್ತು **ಉತ್ತಮ ಭವಿಷ್ಯದ** ಪರಿಗಣನೆ ಮಾಡಿಕೊಳ್ಳಲು ಸಹಾಯ
+        ಮಾಡುವುದು. **ಮಾಹಿತಿಯಲ್ಲಿಯೇ ಶಕ್ತಿ ಇದೆ**, ಮತ್ತು **ಪ್ರಜಾ ಫೋಕಸ್** ನಿಮಗೆ ಯಾವಾಗಲೂ **ನಿಖರ ಮತ್ತು ಸಮಯೋಚಿತ ಮಾಹಿತಿ**
+        ನೀಡುತ್ತದೆ. **ಜಾಗರೂಕವಾಗಿರಿ, ಶಕ್ತಿಯುತವಾಗಿರಿ** — **ಪ್ರಜಾ ಫೋಕಸ್** ನಂಬಿಕಸ್ಥ ಮಾಹಿತಿಯ ಮೂಲ.</p>
+
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <div class="dropdown">
+          <button class="btn btn-primary btn-lg dropdown-toggle px-4 gap-3" type="button" id="languageDropdown"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+            <li><a class="dropdown-item" href="hindistpage.html" onclick="setLanguage('Hindi')">ಹಿಂದಿ</a></li>
+            <li><a class="dropdown-item" href="index.html" onclick="setLanguage('Kannada')">english</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <script>
+        function setLanguage(language) {
+          alert('ಭಾಷೆ ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ: ' + language);
+        }
+      </script>
+    </div>
+  </div>
+
+  <div class="container px-4 py-5" id="custom-cards">
+    <h2 class="pb-2 border-bottom">ನಮ್ಮ ಸೇವೆಗಳು</h2>
+
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+          style="background-image: url('a-photo-of-a-briefcase-sitting-on-a-wood_wnPn3YHmTpK8k9kJN-A4QQ_sPMvnCDnQ0maQGozYeMzhQ.jpg');">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">ನಿಯಮಿತವಾಗಿ ಉದ್ಯೋಗ تازما زمانه تازما زمانه</h3>
+            <ul class="d-flex list-unstyled mt-auto">
+              <li class="me-auto">
+                <img src="a-photo-of-a-briefcase-sitting-on-a-wood_wnPn3YHmTpK8k9kJN-A4QQ_sPMvnCDnQ0maQGozYeMzhQ.jpg"
+                  alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+              </li>
+              <li class="d-flex align-items-center me-3">
+                <small></small>
+              </li>
+              <li class="d-flex align-items-center">
+                <small></small>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+          style="background-image: url('a-close-up-image-of-a-handshake-the-hand_SwJ9VaStQn2HEU7EP0fn8g_KfUK5yhbRUSMlW7mLLAxtw.jpg');width: 350px;height: 250px;">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">ಸರಕಾರಿ ಯೋಜನೆಗಳು</h3>
+            <ul class="d-flex list-unstyled mt-auto">
+              <li class="me-auto">
+                <small></small>
+              </li>
+              <li class="d-flex align-items-center">
+                <small></small>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+          style="background-image: url('a-photo-of-a-red-tractor-parked-in-a-fie_H2P8VfIPSi6XcFc_07bxpg_MWIRz0DHQsi3KUf7wP6How.jpg');">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">ಅನುಧಾನ </h3>
+            <ul class="d-flex list-unstyled mt-auto">
+              <li class="d-flex align-items-center me-3">
+                <small></small>
+              </li>
+              <li class="d-flex align-items-center">
+                <small></small>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container py-5">
+    <h2 class="text-center fw-bold mb-4">ನಿಮ್ಮ ಯೋಜನೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ</h2>
+    <div class="row justify-content-center g-4">
+
+      <!-- One Month Plan -->
+      <div class="col-md-4">
+        <div class="card border-0 shadow-lg rounded-4 pricing-card">
+          <div class="card-body text-center py-4">
+            <h5 class="fw-bold">1 ತಿಂಗಳ ಯೋಜನೆ</h5>
+            <h3 class="fw-bold text-primary">₹30</h3>
+            <p class="text-muted">ಅಲ್ಪಾವಧಿ ಪ್ರವೇಶಕ್ಕೆ ಸೂಕ್ತ</p>
+            <hr>
+            <ul class="list-unstyled">
+              <ul class="list-unstyled">
+                <li>✓ ಎಲ್ಲಾ ಯೋಜನೆಗಳಿಗೆ ಪ್ರವೇಶ</li>
+                <li>✓ ದೈನಂದಿನ ನವೀಕರಣಗಳು</li>
+                <li>✓ ಇಮೇಲ್ ಅಧಿಸೂಚನೆಗಳು</li>
+              </ul>
+            </ul>
+            <button onclick="handleSubscription('monthly')" class="btn btn-primary w-100 rounded-pill">ಯೋಜನೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ</button>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Six Month Plan -->
+      <div class="col-md-4">
+        <div class="card border-0 shadow-lg rounded-4 pricing-card">
+          <div class="card-body text-center py-4">
+            <h5 class="fw-bold">6 ತಿಂಗಳ ಯೋಜನೆ</h5>
+            <h3 class="fw-bold text-success">₹162</h3>
+            <p class="text-muted">10% ಉಳಿತಾಯ ಮಾಡಿ</p>
+            <hr>
+            <ul class="list-unstyled">
+              <li>✓ ಮಾಸಿಕ ಯೋಜನೆಯ ಎಲ್ಲಾ ವೈಶಿಷ್ಟ್ಯಗಳು</li>
+              <li>✓ ಆದ್ಯತೆಯ ಬೆಂಬಲ</li>
+              <li>✓ 10% ಉಳಿತಾಯ</li>
+            </ul>
+            <button onclick="handleSubscription('halfYearly')" class="btn btn-success w-100 rounded-pill">ಯೋಜನೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ</button>
+          </div>
+        </div>
+      </div>
+    
+
+      <!-- One Year Plan -->
+      <div class="col-md-4">
+        <div class="card border-0 shadow-lg rounded-4 pricing-card">
+          <div class="card-body text-center py-4">
+            <h5 class="fw-bold">1 ವರ್ಷದ ಯೋಜನೆ</h5>
+            <h3 class="fw-bold text-warning">₹288</h3>
+            <p class="text-muted">20% ಉಳಿತಾಯ ಮಾಡಿ</p>
+            <hr>
+            <ul class="list-unstyled">
+              <li>✓ ಎಲ್ಲಾ ವೈಶಿಷ್ಟ್ಯಗಳು ಒಳಗೊಂಡಿವೆ</li>
+              <li>✓ ಪ್ರೀಮಿಯಂ ಬೆಂಬಲ</li>
+              <li>✓ 20% ಉಳಿತಾಯ</li>
+            </ul>
+            <button onclick="handleSubscription('yearly')" class="btn btn-warning w-100 rounded-pill">ಯೋಜನೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Add this footer section before the closing body tag -->
+    <footer class="pt-5 pb-3" style="background-color: transparent;">
+      <div class="container">
+        <div class="row">
+          <!-- Contact Section -->
+          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center text-md-start">
+            <h5 class="text-uppercase mb-3" style="color: black;">ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ</h5>
+            <p class="mb-1 contact-item">
+              <i class="fas fa-phone-alt me-2"></i>
+              <a href="tel:+919876543210" style="text-decoration: none; color: black;">+91 98765 43210</a>
+            </p>
+            <p class="mb-0 contact-item">
+              <i class="fas fa-envelope me-2"></i>
+              <a href="mailto:support@prajafocus.info" style="text-decoration: none; color: black;">support@prajafocus.info</a>
+            </p>
+          </div>
+    
+          <!-- Social Media -->
+          <div class="col-lg-3 col-md-6 text-center text-md-start mb-4 mb-lg-0">
+            <h5 class="text-uppercase mb-3" style="color: black;">ನಮ್ಮನ್ನು ಅನುಸರಿಸಿ</h5>
+            <a href="#" class="social-link me-3">
+              <img src="facebook-color-off.svg" alt="Facebook">
+            </a>
+            <a href="#" class="social-link me-3">
+              <img src="x-twitter-color-off.svg" alt="Twitter">
+            </a>
+            <a href="#" class="social-link me-3">
+              <img src="instagram-color-off.svg" alt="Instagram">
+            </a>
+          </div>
+    
+          <!-- Policies -->
+          <div class="col-lg-3 col-md-6 text-center text-md-start mb-4 mb-lg-0">
+            <h5 class="text-uppercase mb-3" style="color: black;">ನೀತಿಗಳು</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="privacy-policy.html" style="text-decoration: none; color: black;">ಗೌಪ್ಯತೆ ನೀತಿ</a></li>
+              <li class="mb-2"><a href="terms-of-use.html" style="text-decoration: none; color: black;">ಬಳಕೆಯ ನಿಯಮಗಳು</a></li>
+              <li class="mb-2"><a href="disclaimer.html" style="text-decoration: none; color: black;">ಹಕ್ಕುತ್ಯಾಗ</a></li>
+            </ul>
+          </div>
+    
+          <!-- Additional Policies -->
+          <div class="col-lg-3 col-md-6 text-center text-md-start mb-4 mb-lg-0">
+            <h5 class="text-uppercase mb-3" style="color: black;">ಹೆಚ್ಚುವರಿ ಮಾಹಿತಿ</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="shipping-delivery.html" style="text-decoration: none; color: black;">ಸೇವೆ ವಿತರಣೆ ನೀತಿ</a></li>
+              <li class="mb-2"><a href="refund-cancellation.html" style="text-decoration: none; color: black;">ಮರುಪಾವತಿ & ರದ್ದತಿ ನೀತಿ</a></li>
+            </ul>
+          </div>
+    
+          <!-- Copyright -->
+          <div class="col-12 text-center border-top pt-3 mt-4">
+            <p class="mb-0" style="font-size: 14px; color: black;">
+              © 2025 ಪ್ರಜಾ ಫೋಕಸ್. ಎಲ್ಲ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/auth.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="js/payment.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        try {
+          const user = JSON.parse(localStorage.getItem('user'));
+          console.log('User data:', user); // For debugging
+          if (user && user.phoneNumber) {
+            document.getElementById('authButtons').classList.add('d-none');
+            document.getElementById('userInfo').classList.remove('d-none');
+            document.getElementById('userName').textContent = "ನಮಸ್ಕಾರ, " + user.phoneNumber;
+          }
+        } catch (error) {
+          console.error('Error handling user data:', error);
+        }
+      });
+    </script>
+</body>
+
+
+</html>

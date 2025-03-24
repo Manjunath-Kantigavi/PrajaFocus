@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>हमारे बारे में - प्रजा फोकस</title>
+    <!-- Same styles as ABOUT.HTML -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Same styles as ABOUT.HTML */
+        .team-member { transition: transform 0.3s ease; }
+        .team-member:hover { transform: translateY(-10px); }
+        .mission-card {
+            border-left: 4px solid #007bff;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+        .mission-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .value-icon { font-size: 2.5rem; color: #007bff; }
+    </style>
+</head>
+<body>
+    <!-- Header with Hindi text -->
+    <!-- Header section -->
+    <div class="container">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            <div class="col-md-3 mb-2 mb-md-0">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none">
+                    <img src="WhatsApp_Image_2025-03-01_at_13.15.09_17987284-removebg-preview.png" 
+                         alt="Logo" 
+                         class="img-fluid" 
+                         style="max-height: 80px; width: auto; object-fit: contain;">
+                </a>
+            </div>
+
+            <!-- Navigation in Hindi -->
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="hindistpage.html" class="nav-link px-2">होम</a></li>
+                <li><a href="hindijobpage.html" class="nav-link px-2">नौकरी अपडेट</a></li>
+                <li><a href="hindigovtschems.html" class="nav-link px-2">सरकारी योजनाएं</a></li>
+                <li><a href="hindisub.html" class="nav-link px-2">सब्सिडी</a></li>
+                <li><a href="hindiabout.html" class="nav-link px-2 link-secondary">हमारे बारे में</a></li>
+            </ul>
+
+            <!-- Auth buttons in Hindi -->
+            <div class="col-md-3 text-end" id="authButtons">
+                <a href="hindilogin.html" style="text-decoration: none;">
+                    <button type="button" class="btn btn-outline-primary me-2">लॉग इन</button>
+                </a>
+                <a href="hindisignup.html" style="text-decoration: none;">
+                    <button type="button" class="btn btn-outline-primary">साइन अप</button>
+                </a>
+            </div>
+        </header>
+    </div>
+
+    <!-- Hero Section in Hindi -->
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">जानकारी के माध्यम से समुदायों को सशक्त बनाना</h1>
+                <p class="lead mb-4">प्रजा फोकस में, हम जानकारी की शक्ति में विश्वास करते हैं। हमारा प्लेटफॉर्स सरकारी पहल और नागरिकों के बीच की दूरी को कम करता है।</p>
+            </div>
+            <div class="col-lg-6 d-flex justify-content-center">
+                <img src="goin up.png" 
+                     alt="हमारे बारे में" 
+                     class="img-fluid" 
+                     style="max-height: 400px; width: auto; object-fit: contain;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Mission & Vision in Hindi -->
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="p-4 mission-card rounded">
+                    <h3 class="fw-bold mb-3">हमारा मिशन</h3>
+                    <p>सरकारी योजनाओं, रोजगार के अवसरों और सब्सिडी की जानकारी तक पहुंच को लोकतांत्रिक बनाना।</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="p-4 mission-card rounded">
+                    <h3 class="fw-bold mb-3">हमारी दृष्टि</h3>
+                    <p>सरकारी जानकारी के लिए सबसे भरोसेमंद प्लेटफॉर्स बनना।</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Values section in Hindi -->
+    <div class="container py-5">
+        <h2 class="text-center mb-5">हमारे मूल्य</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="text-center">
+                    <div class="value-icon mb-3">🎯</div>
+                    <h4>सटीकता</h4>
+                    <p>सभी जानकारी सत्यापित और अद्यतन है</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <div class="value-icon mb-3">🤝</div>
+                    <h4>पहुंच</h4>
+                    <p>कई भाषाओं में जानकारी उपलब्ध</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <div class="value-icon mb-3">⚡</div>
+                    <h4>समयबद्धता</h4>
+                    <p>समय पर अपडेट प्रदान करना</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose Us in Hindi -->
+    <div class="container py-5 bg-light rounded-4">
+        <h2 class="text-center mb-5">प्रजा फोकस क्यों चुनें?</h2>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="text-center">
+                    <div class="value-icon mb-3">👥</div>
+                    <h4 class="text-primary">बढ़ता समुदाय</h4>
+                    <p>सूचित नागरिकों के समुदाय का हिस्सा बनें</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="text-center">
+                    <div class="value-icon mb-3">📋</div>
+                    <h4 class="text-success">व्यापक कवरेज</h4>
+                    <p>सरकारी योजनाओं का विस्तृत डेटाबेस</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="text-center">
+                    <div class="value-icon mb-3">💼</div>
+                    <h4 class="text-info">करियर के अवसर</h4>
+                    <p>विभिन्न क्षेत्रों में नौकरी अपडेट</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="text-center">
+                    <div class="value-icon mb-3">🌐</div>
+                    <h4 class="text-warning">बहुभाषी सहायता</h4>
+                    <p>अपनी पसंदीदा भाषा में जानकारी</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer in Hindi -->
+    <footer class="pt-5 pb-3" style="background-color: transparent;">
+        <div class="container">
+            <div class="row">
+                <!-- Contact Section -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center text-md-start">
+                    <h5 class="text-uppercase mb-3" style="color: black;">संपर्क करें</h5>
+                    <p class="mb-1 contact-item">
+                        <i class="fas fa-phone-alt me-2"></i>
+                        <a href="tel:+919876543210" style="text-decoration: none; color: black;">+91 98765 43210</a>
+                    </p>
+                    <p class="mb-0 contact-item">
+                        <i class="fas fa-envelope me-2"></i>
+                        <a href="mailto:support@prajafocus.info" style="text-decoration: none; color: black;">support@prajafocus.info</a>
+                    </p>
+                </div>
+
+                <!-- Social Media -->
+                <div class="col-lg-3 col-md-6 text-center text-md-start mb-4 mb-lg-0">
+                    <h5 class="text-uppercase mb-3" style="color: black;">हमें फॉलो करें</h5>
+                    <a href="#" class="social-link me-3">
+                        <img src="facebook-color-off.svg" alt="Facebook">
+                    </a>
+                    <a href="#" class="social-link me-3">
+                        <img src="x-twitter-color-off.svg" alt="Twitter">
+                    </a>
+                    <a href="#" class="social-link me-3">
+                        <img src="instagram-color-off.svg" alt="Instagram">
+                    </a>
+                </div>
+
+                <!-- Policies -->
+                <div class="col-lg-3 col-md-6 text-center text-md-start mb-4 mb-lg-0">
+                    <h5 class="text-uppercase mb-3" style="color: black;">नीतियां</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="privacy-policy.html" style="text-decoration: none; color: black;">गोपनीयता नीति</a></li>
+                        <li class="mb-2"><a href="terms-of-use.html" style="text-decoration: none; color: black;">उपयोग की शर्तें</a></li>
+                        <li class="mb-2"><a href="disclaimer.html" style="text-decoration: none; color: black;">अस्वीकरण</a></li>
+                    </ul>
+                </div>
+
+                <!-- Additional Policies -->
+                <div class="col-lg-3 col-md-6 text-center text-md-start mb-4 mb-lg-0">
+                    <h5 class="text-uppercase mb-3" style="color: black;">अतिरिक्त जानकारी</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="shipping-delivery.html" style="text-decoration: none; color: black;">सेवा वितरण नीति</a></li>
+                        <li class="mb-2"><a href="refund-cancellation.html" style="text-decoration: none; color: black;">रिफंड और रद्द करने की नीति</a></li>
+                    </ul>
+                </div>
+
+                <!-- Copyright -->
+                <div class="col-12 text-center border-top pt-3 mt-4">
+                    <p class="mb-0" style="font-size: 14px; color: black;">
+                        © 2025 प्रजा फोकस. सर्वाधिकार सुरक्षित.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Same scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

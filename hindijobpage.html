@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>दस्तावेज़</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <style>
+      body {
+          background-color: #f8f9fa;
+      }
+
+      .content-wrapper {
+          margin-top: 20px;
+      }
+
+      .jobs-container {
+          height: 500px;
+          overflow-y: auto;
+          padding: 15px;
+          background-color: white;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+      }
+
+      .job-card {
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          padding: 15px;
+          background-color: #ffffff;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .job-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .ads-container {
+          height: 500px;
+          overflow-y: auto;
+          background-color: white;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          padding: 10px;
+      }
+
+      .ad-card {
+          background-color: #f9f9f9;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          overflow: hidden;
+          margin-bottom: 15px;
+          padding: 10px;
+      }
+
+      .ad-card img {
+          width: 100%;
+          height: 100px;
+          object-fit: cover;
+          border-bottom: 1px solid #ddd;
+      }
+
+      h3.section-title {
+          background-color: #007bff;
+          color: white;
+          padding: 10px;
+          border-radius: 5px;
+          margin-bottom: 0;
+      }
+  </style>
+  
+</head>
+<body>
+
+    <div class="container">
+        <header
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+          <div class="col-md-3 mb-2 mb-md-0">
+    
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+              <img src="WhatsApp_Image_2025-03-01_at_13.15.09_17987284-removebg-preview.png" alt="Logo" class="img-fluid"
+                style="max-height:100px; width: auto;">
+            </a>
+    
+         
+          </div>
+    
+          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="hindistpage.html" class="nav-link px-2 link-secondary">होम</a></li>
+            <li><a href="hindigovtschems.html" class="nav-link px-2">सरकारी योजनाएं</a></li>
+            <li><a href="hindisub.html" class="nav-link px-2">सब्सिडी</a></li>
+            <li><a href="ABOUT.HTML" class="nav-link px-2">हमारे बारे में</a></li>
+          </ul>
+    
+          <div class="col-md-3 text-end">
+            <a href="hindilogin.html" style="text-decoration: none;"><button type="button" class="btn btn-outline-primary me-2">लॉगिन</button></a>
+            <a href="hindisiguppage.html" style="text-decoration: none;"> <button type="button" class="btn btn-outline-primary me-2">साइन अप</button></a>
+          </div>
+        </header>
+      </div>
+
+
+      
+      <div class="container content-wrapper">
+          <div class="row">
+              <!-- नौकरी अपडेट अनुभाग -->
+              <div class="col-md-8">
+                  <h3 class="section-title">नवीनतम नौकरी अपडेट</h3>
+                  <div class="jobs-container">
+                      <div id="jobsList">
+                          <p class="text-muted">लोड हो रहा है...</p>
+                      </div>
+                  </div>
+              </div>
+      
+              <!-- विज्ञापन अनुभाग -->
+              <div class="col-md-4">
+                  <h3 class="section-title">प्रायोजित विज्ञापन</h3>
+                  <div class="ads-container">
+                      <div class="ad-card">
+                          <img src="https://via.placeholder.com/300x100" alt="विज्ञापन 1">
+                          <p class="mb-0">यहां विज्ञापन दें! अधिक जानकारी के लिए हमसे संपर्क करें।</p>
+                      </div>
+                      <div class="ad-card">
+                          <img src="https://via.placeholder.com/300x100" alt="विज्ञापन 2">
+                          <p class="mb-0">अपने व्यवसाय को हमारे साथ बढ़ावा दें!</p>
+                      </div>
+                      <div class="ad-card">
+                          <img src="https://via.placeholder.com/300x100" alt="विज्ञापन 3">
+                          <p class="mb-0">आपका विज्ञापन यहां हो सकता है। अभी कॉल करें!</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Scripts -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script>
+          localStorage.setItem('selectedLanguage', 'hi');
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="js/jobs.js"></script>         
+      
+
+
+<footer class="pt-5 pb-3" style="background-color: transparent;">
+    <div class="container">
+      <div class="row">
+        <!-- Contact Section -->
+        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 text-center text-md-start">
+          <h5 class="text-uppercase mb-3" style="color: black;">Contact Us</h5>
+          <p class="mb-1 contact-item">
+            <i class="fas fa-phone-alt me-2"></i>
+            <a href="tel:+919876543210" style="text-decoration: none; color: black;">+91 98765 43210</a>
+          </p>
+          <p class="mb-0 contact-item">
+            <i class="fas fa-envelope me-2"></i>
+            <a href="mailto:info@prajafocus.com" style="text-decoration: none; color: black;">info@prajafocus.com</a>
+          </p>
+        </div>
+  
+        <!-- Social Media -->
+        <div class="col-lg-4 col-md-6 text-center text-md-start mb-4 mb-lg-0">
+          <h5 class="text-uppercase mb-3" style="color: black;">Follow Us</h5>
+          <a href="#" class="social-link me-3">
+            <img src="facebook-color-off.svg" alt="Facebook">
+          </a>
+          <a href="#" class="social-link me-3">
+            <img src="x-twitter-color-off.svg" alt="Twitter">
+          </a>
+          <a href="#" class="social-link me-3">
+            <img src="instagram-color-off.svg" alt="Instagram">
+          </a>
+        </div>
+  
+        <!-- Copyright -->
+        <div class="col-12 text-center border-top pt-3 mt-4">
+          <p class="mb-0" style="font-size: 14px; color: black;">
+            © 2025 Praja Focus. All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+    
+</body>
+</html>
