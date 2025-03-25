@@ -320,23 +320,29 @@ function displayJobs(jobs) {
     tbody.innerHTML = jobRows.join('');
 }
 
-function openJobForm(jobData = null) {
-    const modal = new bootstrap.Modal(document.getElementById('jobModal'));
+window.openJobForm = function openJobForm(jobData = null) {
+    const modal = document.getElementById('jobModal');
+    const form = document.getElementById('jobForm');
+    const modalTitle = document.getElementById('jobModalTitle');
+
+    // Reset form
+    form.reset();
+    form.dataset.jobId = '';
+
+    // If editing existing job
     if (jobData) {
-        document.getElementById('jobModalTitle').textContent = 'Edit Job';
+        modalTitle.textContent = 'Edit Job';
+        form.dataset.jobId = jobData._id;
         document.getElementById('jobTitle').value = jobData.title;
-        document.getElementById('jobCompany').value = jobData.company;
-        document.getElementById('jobLocation').value = jobData.location;
         document.getElementById('jobDescription').value = jobData.description;
+        document.getElementById('jobEligibility').value = jobData.eligibility;
         document.getElementById('jobLink').value = jobData.applicationLink;
-        document.getElementById('jobSubscriptionRequired').checked = jobData.subscriptionRequired;
-        document.getElementById('jobForm').dataset.jobId = jobData._id;
     } else {
-        document.getElementById('jobModalTitle').textContent = 'Add New Job';
-        document.getElementById('jobForm').reset();
-        delete document.getElementById('jobForm').dataset.jobId;
+        modalTitle.textContent = 'Add New Job';
     }
-    modal.show();
+
+    // Show modal
+    new bootstrap.Modal(modal).show();
 }
 
 async function saveJob() {
