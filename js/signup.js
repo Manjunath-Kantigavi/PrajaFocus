@@ -1,3 +1,6 @@
+import config from '../src/config/config.js';
+
+
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM loaded");
     
@@ -39,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log('Sending data:', requestData);
 
         try {
-            const response = await fetch("http://localhost:5008/api/users/register", {
+            const response = await fetch(`${config.API_URL}/api/users/register`, {
                 method: "POST",
                 headers: { 
                     "Content-Type": "application/json"

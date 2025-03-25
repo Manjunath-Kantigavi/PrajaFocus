@@ -1,3 +1,5 @@
+import config from '../src/config/config.js';
+
 document.addEventListener('DOMContentLoaded', function() {
     const jobsList = document.getElementById('jobsList');
     const token = localStorage.getItem('userToken');
@@ -38,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function fetchJobs() {
         try {
-            const response = await fetch('http://localhost:5008/jobschemes', {
+            const response = await fetch(`${config.API_URL}/jobschemes`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Accept-Language': language

@@ -1,3 +1,5 @@
+import config from '../src/config/config.js';
+
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM loaded");
     
@@ -37,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log('Sending data:', requestData);
 
         try {
-            const response = await fetch("http://localhost:5008/api/users/login", {
+            const response = await fetch(`${config.API_URL}/api/users/login`, {
                 method: "POST",
                 headers: { 
                     "Content-Type": "application/json"
@@ -67,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         });
                         
                         setTimeout(() => {
-                            window.location.href = 'INDEX.html';
+                            window.location.href = 'index.html';
                         }, 100);
                     }
                 }

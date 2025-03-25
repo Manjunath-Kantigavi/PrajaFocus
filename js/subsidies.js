@@ -1,3 +1,5 @@
+import config from '../src/config/config.js';
+
 document.addEventListener('DOMContentLoaded', function() {
     const subsidiesList = document.getElementById('subsidyList');
     const token = localStorage.getItem('userToken');
@@ -52,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function fetchSubsidies() {
         try {
-            const response = await fetch('http://localhost:5008/api/subsidies', {
+            const response = await fetch(`${config.API_URL}/api/subsidies`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Accept-Language': language

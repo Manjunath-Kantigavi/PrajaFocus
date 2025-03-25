@@ -1,3 +1,5 @@
+import config from '../../src/config/config.js';
+
 document.addEventListener('DOMContentLoaded', function() {
     const token = localStorage.getItem('adminToken');
     if (!token) {
@@ -51,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function loadDashboardStats() {
     try {
-        const response = await fetch('http://localhost:5008/admin/stats', {
+        const response = await fetch(`${config.API_URL}/admin/stats`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
             }
@@ -272,7 +274,7 @@ async function loadJobsManager() {
 // Job Management Functions
 async function loadJobs() {
     try {
-        const response = await fetch('http://localhost:5008/jobschemes?isAdmin=true', {
+        const response = await fetch(`${config.API_URL}/jobschemes?isAdmin=true`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
             }
@@ -347,7 +349,7 @@ async function saveJob() {
     };
 
     const jobId = form.dataset.jobId;
-    const url = `http://localhost:5008/jobschemes${jobId ? `/${jobId}` : ''}`;
+    const url = `${config.API_URL}/jobschemes${jobId ? `/${jobId}` : ''}`;
     const method = jobId ? 'PUT' : 'POST';
 
     try {
@@ -386,7 +388,7 @@ async function deleteJob(jobId) {
 
     if (result.isConfirmed) {
         try {
-            const response = await fetch(`http://localhost:5008/jobschemes/${jobId}`, {
+            const response = await fetch(`${config.API_URL}/jobschemes/${jobId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
@@ -531,7 +533,7 @@ function openSchemeForm(schemeData = null) {
 
 async function loadSchemes() {
     try {
-        const response = await fetch('http://localhost:5008/govtbenefits?isAdmin=true', {
+        const response = await fetch(`${config.API_URL}/govtbenefits?isAdmin=true`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
             }
@@ -561,7 +563,7 @@ async function saveScheme() {
     };
 
     const schemeId = form.dataset.schemeId;
-    const url = `http://localhost:5008/govtbenefits${schemeId ? `/${schemeId}` : ''}`;
+    const url = `${config.API_URL}/govtbenefits${schemeId ? `/${schemeId}` : ''}`;
     const method = schemeId ? 'PUT' : 'POST';
 
     try {
@@ -589,7 +591,7 @@ async function saveScheme() {
 
 async function editScheme(schemeId) {
     try {
-        const response = await fetch(`http://localhost:5008/govtbenefits/${schemeId}`, {
+        const response = await fetch(`${config.API_URL}/govtbenefits/${schemeId}`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
             }
@@ -678,7 +680,7 @@ async function loadSubsidiesManager() {
 
 async function loadSubsidies() {
     try {
-        const response = await fetch('http://localhost:5008/api/subsidies?isAdmin=true', {
+        const response = await fetch(`${config.API_URL}/api/subsidies?isAdmin=true`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('adminToken')}`,
                 'Content-Type': 'application/json'
@@ -709,7 +711,7 @@ async function saveSubsidy() {
     };
 
     const subsidyId = form.dataset.subsidyId;
-    const url = `http://localhost:5008/api/subsidies${subsidyId ? `/${subsidyId}` : ''}`; // Changed from /subsidies to /api/subsidies
+    const url = `${config.API_URL}/api/subsidies${subsidyId ? `/${subsidyId}` : ''}`; // Changed from /subsidies to /api/subsidies
     const method = subsidyId ? 'PUT' : 'POST';
 
     try {
@@ -738,7 +740,7 @@ async function saveSubsidy() {
 // Fix editSubsidy function
 async function editSubsidy(subsidyId) {
     try {
-        const response = await fetch(`http://localhost:5008/api/subsidies/${subsidyId}`, { // Changed from /subsidies to /api/subsidies
+        const response = await fetch(`${config.API_URL}/api/subsidies/${subsidyId}`, { // Changed from /subsidies to /api/subsidies
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
             }
@@ -770,7 +772,7 @@ async function deleteSubsidy(subsidyId) {
 
     if (result.isConfirmed) {
         try {
-            const response = await fetch(`http://localhost:5008/api/subsidies/${subsidyId}`, { // Changed from /subsidies to /api/subsidies
+            const response = await fetch(`${config.API_URL}/api/subsidies/${subsidyId}`, { // Changed from /subsidies to /api/subsidies
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
@@ -792,7 +794,7 @@ async function deleteSubsidy(subsidyId) {
 
 async function editJob(jobId) {
     try {
-        const response = await fetch(`http://localhost:5008/jobschemes/${jobId}`, {
+        const response = await fetch(`${config.API_URL}/jobschemes/${jobId}`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
             }
@@ -853,7 +855,7 @@ async function loadSubscribersManager() {
 
 async function loadSubscribers() {
     try {
-        const response = await fetch('http://localhost:5008/api/subscribers', {
+        const response = await fetch(`${config.API_URL}/api/subscribers`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('adminToken')}`,
                 'Content-Type': 'application/json'
@@ -885,7 +887,7 @@ async function deleteSubscriber(subscriberId) {
 
     if (result.isConfirmed) {
         try {
-            const response = await fetch(`http://localhost:5008/api/subscribers/${subscriberId}`, {
+            const response = await fetch(`${config.API_URL}/api/subscribers/${subscriberId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('adminToken')}`

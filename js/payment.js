@@ -1,3 +1,7 @@
+import config from '../src/config/config.js';
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     // Get selected plan from URL parameters
     const urlParams = new URLSearchParams(window.location.search);
@@ -45,7 +49,7 @@ async function handleSubscription(planType) {
     
     try {
         // First, create order from our backend
-        const orderResponse = await fetch('http://localhost:5008/api/create-order', {
+        const orderResponse = await fetch(`${config.API_URL}/api/create-order`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -82,7 +86,7 @@ async function handleSubscription(planType) {
             },
             handler: async function(response) {
                 try {
-                    const verifyResponse = await fetch('http://localhost:5008/api/verify-payment', {
+                    const verifyResponse = await fetch(`${config.API_URL}/api/verify-payment`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

@@ -1,3 +1,5 @@
+import config from '../src/config/config.js';
+
 document.addEventListener('DOMContentLoaded', function() {
     const isHomePage = window.location.pathname.toLowerCase().includes('index.html');
     const container = document.getElementById('govtBenefitsContainer');
@@ -48,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function loadGovtBenefits() {
         try {
-            const response = await fetch('http://localhost:5008/govtbenefits', {
+            const response = await fetch(`${config.API_URL}/govtbenefits`, {
                 headers: {
                     ...(isHomePage ? {} : { 'Authorization': `Bearer ${token}` }),
                     'Accept-Language': language

@@ -147,7 +147,7 @@
         schemesList.innerHTML = '<p class="text-center">ಲೋಡ್ ಆಗುತ್ತಿದೆ...</p>';
 
         try {
-            const response = await fetch('http://localhost:5008/govtbenefits', {
+            const response = await fetch('https://prajafocusbackend.onrender.com/govtbenefits', {
                 headers: {
                     'Accept-Language': 'kn',
                     'Authorization': `Bearer ${localStorage.getItem('userToken')}`
