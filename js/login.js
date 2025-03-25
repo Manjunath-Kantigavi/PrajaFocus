@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         });
                         
                         setTimeout(() => {
-                            window.location.href = 'INDEX.html';
+                            window.location.href = 'index.html';
                         }, 100);
                     }
                 }
