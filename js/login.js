@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log('Sending data:', requestData);
 
         try {
-            const response = await fetch("http://localhost:5008/api/users/login", {
+            const response = await fetch("https://prajafocusbackend.onrender.com/api/users/login", {
                 method: "POST",
                 headers: { 
                     "Content-Type": "application/json"
