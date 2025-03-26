@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-async function handleSubscription(planType) {
+window.handleSubscription = async function(planType) {
     const plans = {
         'monthly': { amount: 30, duration: '1 Month' },
         'halfYearly': { amount: 162, duration: '6 Months' },
