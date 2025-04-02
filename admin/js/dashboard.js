@@ -345,7 +345,7 @@ window.openJobForm = function openJobForm(jobData = null) {
     new bootstrap.Modal(modal).show();
 }
 
-async function saveJob() {
+window.saveJob = async function () {
     const form = document.getElementById('jobForm');
     const jobData = {
         title: document.getElementById('jobTitle').value,
@@ -381,7 +381,7 @@ async function saveJob() {
     }
 }
 
-async function deleteJob(jobId) {
+window.deleteJob = async  function (jobId) {
     const result = await Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -798,7 +798,7 @@ async function deleteSubsidy(subsidyId) {
     }
 }
 
-async function editJob(jobId) {
+window.editJob = async function (jobId) {
     try {
         const response = await fetch(`${config.API_URL}/jobschemes/${jobId}`, {
             headers: {
