@@ -973,7 +973,7 @@ function displaySubscribers(subscribers) {
     `).join('');
 }
 
-function openSubsidyForm(subsidyData = null) {
+window.openSubsidyForm = function (subsidyData = null) {
     const modal = document.getElementById('subsidyModal');
     const form = document.getElementById('subsidyForm');
     const modalTitle = document.getElementById('subsidyModalTitle');
