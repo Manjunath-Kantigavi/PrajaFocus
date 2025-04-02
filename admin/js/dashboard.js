@@ -515,7 +515,7 @@ function displaySchemes(schemes) {
     `).join('');
 }
 
-function openSchemeForm(schemeData = null) {
+window.openSchemeForm = function(schemeData = null) {
     const modal = new bootstrap.Modal(document.getElementById('schemeModal'));
     const form = document.getElementById('schemeForm');
     
@@ -557,7 +557,7 @@ async function loadSchemes() {
     }
 }
 
-async function saveScheme() {
+window.saveScheme = async function() {
     const form = document.getElementById('schemeForm');
     const schemeData = {
         title: document.getElementById('schemeTitle').value,
@@ -595,7 +595,7 @@ async function saveScheme() {
     }
 }
 
-async function editScheme(schemeId) {
+window.editScheme = async function (schemeId) {
     try {
         const response = await fetch(`${config.API_URL}/govtbenefits/${schemeId}`, {
             headers: {
@@ -614,6 +614,39 @@ async function editScheme(schemeId) {
         Swal.fire('Error', 'Failed to load scheme details', 'error');
     }
 }
+window.deleteScheme = async function(schemeId) {
+    const result = await Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, delete it!'
+    });
+
+    if (result.isConfirmed) {
+        try {
+            const response = await fetch(`${config.API_URL}/govtbenefits/${schemeId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
+                }
+            });
+
+            if (response.ok) {
+                Swal.fire('Deleted!', 'Scheme has been deleted.', 'success');
+                loadSchemes();
+            } else {
+                throw new Error('Failed to delete scheme');
+            }
+        } catch (error) {
+            console.error('Error deleting scheme:', error);
+            Swal.fire('Error', 'Failed to delete scheme', 'error');
+        }
+    }
+};
+
 
 // Subsidies Manager
 async function loadSubsidiesManager() {
@@ -707,7 +740,7 @@ async function loadSubsidies() {
 }
 
 // Fix saveSubsidy function
-async function saveSubsidy() {
+window.saveSubsidy = async function () {
     const form = document.getElementById('subsidyForm');
     const subsidyData = {
         name: document.getElementById('subsidyName').value,
@@ -744,7 +777,7 @@ async function saveSubsidy() {
 }
 
 // Fix editSubsidy function
-async function editSubsidy(subsidyId) {
+window.editSubsidy =  async function (subsidyId) {
     try {
         const response = await fetch(`${config.API_URL}/api/subsidies/${subsidyId}`, { // Changed from /subsidies to /api/subsidies
             headers: {
@@ -765,7 +798,7 @@ async function editSubsidy(subsidyId) {
 }
 
 // Fix deleteSubsidy function
-async function deleteSubsidy(subsidyId) {
+window.deleteSubsidy = async function (subsidyId) {
     const result = await Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -880,7 +913,7 @@ async function loadSubscribers() {
     }
 }
 
-async function deleteSubscriber(subscriberId) {
+window.deleteSubscriber =  async function (subscriberId) {
     const result = await Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
