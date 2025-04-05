@@ -1023,3 +1023,193 @@ function displaySubsidies(subsidies) {
         </tr>
     `).join('');
 }
+// ... existing code ...
+
+async function loadPaymentsManager() {
+    const mainContent = document.getElementById('main-content');
+    mainContent.innerHTML = `
+        <div class="container-fluid py-4">
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-4">
+                <h2 class="mb-3 mb-sm-0">Revenue Management</h2>
+                <div>
+                    <select id="timeFilter" class="form-select me-2 d-inline-block" style="width: auto;">
+                        <option value="all">All Time</option>
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                        <option value="year">This Year</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Revenue Stats Cards -->
+            <div class="row g-3 mb-4">
+                <div class="col-md-3">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body">
+                            <h6 class="card-title">Total Revenue</h6>
+                            <h3 class="mb-0" id="totalRevenue">₹0</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <h6 class="card-title">Total Transactions</h6>
+                            <h3 class="mb-0" id="totalTransactions">0</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-info text-white">
+                        <div class="card-body">
+                            <h6 class="card-title">Average Transaction</h6>
+                            <h3 class="mb-0" id="avgTransaction">₹0</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-warning text-white">
+                        <div class="card-body">
+                            <h6 class="card-title">Active Subscribers</h6>
+                            <h3 class="mb-0" id="activeSubscribers">0</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revenue Chart -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Transactions Table -->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Recent Transactions</h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Transaction ID</th>
+                                    <th>User</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactionsTableBody">
+                                <tr>
+                                    <td colspan="5" class="text-center">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Initialize the revenue data
+    await loadRevenueData();
+    
+    // Add event listener for time filter
+    document.getElementById('timeFilter').addEventListener('change', loadRevenueData);
+}
+
+async function loadRevenueData() {
+    try {
+        const timeFilter = document.getElementById('timeFilter').value;
+        const response = await fetch(`${config.API_URL}/api/admin/revenue?timeFrame=${timeFilter}`, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch revenue data');
+        }
+
+        const data = await response.json();
+        updateRevenueStats(data);
+        updateRevenueChart(data.chartData);
+        displayTransactions(data.transactions);
+    } catch (error) {
+        console.error('Error loading revenue data:', error);
+        Swal.fire('Error', 'Failed to load revenue data', 'error');
+    }
+}
+
+function updateRevenueStats(data) {
+    document.getElementById('totalRevenue').textContent = `₹${data.totalRevenue.toLocaleString()}`;
+    document.getElementById('totalTransactions').textContent = data.totalTransactions.toLocaleString();
+    document.getElementById('avgTransaction').textContent = `₹${data.averageTransaction.toLocaleString()}`;
+    document.getElementById('activeSubscribers').textContent = data.activeSubscribers.toLocaleString();
+}
+
+function updateRevenueChart(chartData) {
+    const ctx = document.getElementById('revenueChart').getContext('2d');
+    
+    if (window.revenueChart) {
+        window.revenueChart.destroy();
+    }
+
+    window.revenueChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: chartData.labels,
+            datasets: [{
+                label: 'Revenue',
+                data: chartData.values,
+                borderColor: '#0d6efd',
+                tension: 0.1,
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: value => '₹' + value.toLocaleString()
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Revenue Trend'
+                }
+            }
+        }
+    });
+}
+
+function displayTransactions(transactions) {
+    const tbody = document.getElementById('transactionsTableBody');
+    
+    if (!transactions || transactions.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center">No transactions found</td></tr>';
+        return;
+    }
+
+    tbody.innerHTML = transactions.map(tx => `
+        <tr>
+            <td>${tx.transactionId}</td>
+            <td>${tx.userName}</td>
+            <td>₹${tx.amount.toLocaleString()}</td>
+            <td>${new Date(tx.date).toLocaleDateString()}</td>
+            <td>
+                <span class="badge bg-${tx.status === 'success' ? 'success' : 'danger'}">
+                    ${tx.status}
+                </span>
+            </td>
+        </tr>
+    `).join('');
+}
+
+// ... rest of the existing code ...
