@@ -1025,7 +1025,7 @@ function displaySubsidies(subsidies) {
 }
 // ... existing code ...
 
-async function loadPaymentsManager() {
+window.loadPaymentsManager = async function ()  {
     const mainContent = document.getElementById('main-content');
     mainContent.innerHTML = `
         <div class="container-fluid py-4">
@@ -1119,7 +1119,7 @@ async function loadPaymentsManager() {
     document.getElementById('timeFilter').addEventListener('change', loadRevenueData);
 }
 
-async function loadRevenueData() {
+window.loadRevenueData = async function () {
     try {
         const timeFilter = document.getElementById('timeFilter').value;
         const response = await fetch(`${config.API_URL}/api/admin/revenue?timeFrame=${timeFilter}`, {
