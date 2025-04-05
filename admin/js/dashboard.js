@@ -1122,7 +1122,7 @@ window.loadPaymentsManager = async function ()  {
 window.loadRevenueData = async function () {
     try {
         const timeFilter = document.getElementById('timeFilter').value;
-        const response = await fetch(`${config.API_URL}/api/admin/revenue?timeFrame=${timeFilter}`, {
+        const response = await fetch(`${config.API_URL}/admin/revenue?timeFrame=${timeFilter}`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
             }
