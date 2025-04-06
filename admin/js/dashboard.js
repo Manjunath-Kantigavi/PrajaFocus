@@ -1152,9 +1152,10 @@ function updateRevenueStats(data) {
 function updateRevenueChart(chartData) {
     const ctx = document.getElementById('revenueChart').getContext('2d');
     
-    if (window.revenueChart) {
-        window.revenueChart.destroy();
-    }
+   // Destroy existing chart if it exists
+   if (window.revenueChart instanceof Chart) {
+    window.revenueChart.destroy();
+}
 
     window.revenueChart = new Chart(ctx, {
         type: 'line',
