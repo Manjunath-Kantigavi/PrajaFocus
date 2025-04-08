@@ -49,6 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const t = translations[language] || translations['en'];  // Define t at the top level
 
     async function loadGovtBenefits() {
+        if (!container) return;
+        container.innerHTML = `<p class="text-center">${t.loading}</p>`;
         try {
             const response = await fetch(`${config.API_URL}/govtbenefits`, {
                 headers: {
@@ -63,22 +65,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const benefits = await response.json();
             displayBenefits(benefits.slice(0, 3));
-        } catch (error) {
+        }  catch (error) {
             console.error('Error:', error);
-            if (!isHomePage) {
+            container.innerHTML = `<p class="text-center text-danger">${t.error}</p>`;
+            if (!token) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
-                    text: 'Please login to view all benefits',
+                    text: 'Please login to view benefits',
                     confirmButtonColor: '#007bff'
                 }).then(() => {
-                    if (!token) {
-                        window.location.href = `${language}login.html`;
-                    }
+                    window.location.href = `${language}login.html`;
                 });
             }
         }
     }
+
 
     function displayBenefits(benefits) {
         if (!container) return;
