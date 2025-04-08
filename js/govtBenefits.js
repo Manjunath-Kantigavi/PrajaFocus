@@ -113,21 +113,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             </div>
         `).join('');
-        if (benefits.length === 3 && !localStorage.getItem('isSubscribed')) {
-            Swal.fire({
-                icon: 'info',
-                title: translations[language].subscribeTitle,
-                text: translations[language].subscribeText,
-                confirmButtonColor: '#007bff',
-                confirmButtonText: translations[language].subscribeButton,
-                showCancelButton: true,
-                cancelButtonText: translations[language].laterButton
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = 'subscription.html';
-                }
-            });
-        }
+        // Updated subscription alert logic to match jobs.js
+    if (benefits.length === 3 && !localStorage.getItem('isSubscribed')) {
+        Swal.fire({
+            icon: 'info',
+            title: translations[language].subscribeTitle,
+            text: translations[language].subscribeText,
+            confirmButtonColor: '#007bff',
+            showCancelButton: true,
+            confirmButtonText: translations[language].subscribeButton,
+            cancelButtonText: translations[language].laterButton
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = 'subscription.html';
+            }
+        });
+    }
     }
 
     // Make loadGovtBenefits available globally
