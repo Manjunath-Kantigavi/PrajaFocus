@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
         }).join('');
 
-        if (subsidies.length === 1) {
+        if (subsidies.length === 3) {
             Swal.fire({
                 icon: 'info',
                 title: translations[language].subscribeTitle,
