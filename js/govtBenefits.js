@@ -58,6 +58,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const t = translations[language] || translations['en'];  // Define t at the top level
 
     async function loadGovtBenefits() {
+        if (!container) return;
+        container.innerHTML = `<p class="text-center">${t.loading}</p>`;
         try {
             const response = await fetch(`${config.API_URL}/govtbenefits`, {
                 headers: {
