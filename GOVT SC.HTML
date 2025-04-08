@@ -223,31 +223,31 @@
     
     <!-- Update the scripts section before closing body tag, make sure they're in the correct order -->
     <!-- Keep only these scripts at the bottom of the body -->
+    <!-- Remove type="module" and update script order -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/auth.js"></script>
-    <script  type="module" src="js/govtBenefits.js"></script>
+    <!-- Remove type="module" -->
+    <script src="js/govtBenefits.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const token = localStorage.getItem('userToken');
-            const username = localStorage.getItem('username');
-            
-            // Update auth UI
-            if (token && username) {
-                const authContainer = document.querySelector('.col-md-3.text-end');
-                if (authContainer) {
-                    authContainer.innerHTML = `
-                        <span class="me-2">${username}</span>
-                        <button type="button" class="btn btn-outline-primary me-2" onclick="handleLogout()">Logout</button>
-                    `;
-                }
-            }
+            // Call loadGovtBenefits directly
+            loadGovtBenefits();
         });
-    
-        function handleLogout() {
-            localStorage.removeItem('userToken');
-            localStorage.removeItem('username');
-            window.location.href = 'enlogin.html';
+    </script>
+    <script>
+        const token = localStorage.getItem('userToken');
+        const username = localStorage.getItem('username');
+        
+        // Update auth UI
+        if (token && username) {
+            const authContainer = document.querySelector('.col-md-3.text-end');
+            if (authContainer) {
+                authContainer.innerHTML = `
+                    <span class="me-2">${username}</span>
+                    <button type="button" class="btn btn-outline-primary me-2" onclick="handleLogout()">Logout</button>
+                `;
+            }
         }
     </script>
 </body>

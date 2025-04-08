@@ -108,6 +108,65 @@ document.addEventListener('DOMContentLoaded', function() {
         `).join('');
     }
 
+    function loadGovtBenefits() {
+        const container = document.getElementById('govtBenefitsContainer');
+        const token = localStorage.getItem('userToken');
+        const language = localStorage.getItem('selectedLanguage') || 'en';
+        const isSubscribed = localStorage.getItem('isSubscribed') === 'true';
+    
+        if (!container) return;
+        container.innerHTML = `<p class="text-center">${translations[language].loading}</p>`;
+    
+        fetch(`${API_URL}/govtbenefits`, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept-Language': language
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch benefits');
+            }
+            return response.json();
+        })
+        .then(benefits => {
+            // Display all benefits if subscribed, otherwise only show 3
+            const displayedBenefits = isSubscribed ? benefits : benefits.slice(0, 3);
+            displayBenefits(displayedBenefits);
+            
+            // Show subscription prompt if not subscribed and there are more benefits
+            if (!isSubscribed && benefits.length > 3) {
+                showSubscriptionPrompt();
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            container.innerHTML = `<p class="text-center text-danger">${translations[language].error}</p>`;
+            if (!token) {
+                window.location.href = 'login.html';
+            }
+        });
+    }
+
+    function showSubscriptionPrompt() {
+        const language = localStorage.getItem('selectedLanguage') || 'en';
+        const t = translations[language];
+        
+        Swal.fire({
+            icon: 'info',
+            title: t.subscribeTitle,
+            text: t.subscribeText,
+            confirmButtonColor: '#007bff',
+            showCancelButton: true,
+            confirmButtonText: t.subscribeButton,
+            cancelButtonText: t.laterButton
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = 'subscription.html';
+            }
+        });
+    }
+    
     // Make loadGovtBenefits available globally
     window.loadGovtBenefits = loadGovtBenefits;
     
