@@ -83,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayBenefits(benefits) {
         if (!container) return;
         
-        // Remove translations definition from here
         container.innerHTML = benefits.map(benefit => `
             <div class="scheme-card mb-3">
                 <h5 class="mb-2">${benefit.title || t.na}</h5>
@@ -104,6 +103,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
         `).join('');
+    
+        // Add subscription alert for non-subscribed users
+        if (!localStorage.getItem('isSubscribed') && !window.location.pathname.toLowerCase().includes('index.html')) {
+            Swal.fire({
+                icon: 'info',
+                title: t.subscribeTitle || 'Subscribe for More',
+                text: t.subscribeText || 'Subscribe to view all benefits!',
+                confirmButtonColor: '#007bff',
+                showCancelButton: true,
+                confirmButtonText: 'Subscribe Now',
+                cancelButtonText: 'Later'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'subscription.html';
+                }
+            });
+        }
     }
 
     // Make loadGovtBenefits available globally

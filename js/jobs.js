@@ -83,12 +83,20 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `).join('');
 
-        if (jobs.length === 1) {
+        // Modified to show alert for non-subscribed users
+        if (!localStorage.getItem('isSubscribed')) {
             Swal.fire({
                 icon: 'info',
                 title: translations[language].subscribeTitle,
                 text: translations[language].subscribeText,
-                confirmButtonColor: '#007bff'
+                confirmButtonColor: '#007bff',
+                showCancelButton: true,
+                confirmButtonText: 'Subscribe Now',
+                cancelButtonText: 'Later'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'subscription.html';
+                }
             });
         }
     }
