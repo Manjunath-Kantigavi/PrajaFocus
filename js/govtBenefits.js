@@ -1,7 +1,7 @@
 import config from '../src/config/config.js';
 
 document.addEventListener('DOMContentLoaded', function () {
-    const isHomePage = window.location.pathname.toLowerCase().includes('index.html');
+    // const isHomePage = window.location.pathname.toLowerCase().includes('index.html');
     const container = document.getElementById('govtBenefitsContainer');
     const token = localStorage.getItem('userToken');
     const language = localStorage.getItem('selectedLanguage') || 'en';
@@ -140,9 +140,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Make loadGovtBenefits available globally
     window.loadGovtBenefits = loadGovtBenefits;
+    loadGovtBenefits();
 
     // Only auto-load if we're not on the schemes page
-    if (!window.location.pathname.toLowerCase().includes('govt sc.html')) {
-        loadGovtBenefits();
-    }
+    // if (!window.location.pathname.toLowerCase().includes('govt sc.html')) {
+        
+    // }
 });
