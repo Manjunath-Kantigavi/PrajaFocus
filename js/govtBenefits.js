@@ -63,8 +63,10 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
             const response = await fetch(`${config.API_URL}/govtbenefits`, {
                 headers: {
-                    ...(isHomePage ? {} : { 'Authorization': `Bearer ${token}` }),
-                    'Accept-Language': language
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Accept-Language': language
+                    }
                 }
             });
 
