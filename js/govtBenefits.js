@@ -1,6 +1,6 @@
 import config from '../src/config/config.js';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const isHomePage = window.location.pathname.toLowerCase().includes('index.html');
     const container = document.getElementById('govtBenefitsContainer');
     const token = localStorage.getItem('userToken');
@@ -12,7 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
             department: 'ಇಲಾಖೆ',
             eligibility: 'ಅರ್ಹತೆ',
             applyNow: 'ಈಗ ಅರ್ಜಿ ಸಲ್ಲಿಸಿ',
-            subscriptionRequired: 'ಚಂದಾದಾರಿಕೆ ಅಗತ್ಯವಿದೆ',
+            subscribeTitle: 'ಹೆಚ್ಚಿನ ಪ್ರಯೋಜನಗಳಿಗಾಗಿ ಚಂದಾದಾರರಾಗಿ',
+            subscribeText: 'ಎಲ್ಲಾ ಸರ್ಕಾರಿ ಯೋಜನೆಗಳನ್ನು ವೀಕ್ಷಿಸಲು ಚಂದಾದಾರರಾಗಿ!',
+            subscribeButton: 'ಈಗ ಚಂದಾದಾರರಾಗಿ',
+            laterButton: 'ನಂತರ',
             freeAccess: 'ಉಚಿತ ಪ್ರವೇಶ',
             na: 'ಲಭ್ಯವಿಲ್ಲ',
             loading: 'ಲೋಡ್ ಆಗುತ್ತಿದೆ...',
@@ -24,7 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
             department: 'विभाग',
             eligibility: 'योग्यता',
             applyNow: 'अभी आवेदन करें',
-            subscriptionRequired: 'सदस्यता आवश्यक है',
+            subscribeTitle: 'अधिक लाभों के लिए सदस्यता लें',
+            subscribeText: 'सभी सरकारी योजनाओं को देखने के लिए सदस्यता लें!',
+            subscribeButton: 'अभी सदस्यता लें',
+            laterButton: 'बाद में',
             freeAccess: 'नि:शुल्क एक्सेस',
             na: 'उपलब्ध नहीं',
             loading: 'लोड हो रहा है...',
@@ -36,7 +42,10 @@ document.addEventListener('DOMContentLoaded', function() {
             department: 'Department',
             eligibility: 'Eligibility',
             applyNow: 'Apply Now',
-            subscriptionRequired: 'Subscription Required',
+            subscribeTitle: 'Subscribe for More Benefits',
+            subscribeText: 'Subscribe to view all government schemes!',
+            subscribeButton: 'Subscribe Now',
+            laterButton: 'Later',
             freeAccess: 'Free Access',
             na: 'Not Available',
             loading: 'Loading...',
@@ -82,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function displayBenefits(benefits) {
         if (!container) return;
-        
+
         // Remove translations definition from here
         container.innerHTML = benefits.map(benefit => `
             <div class="scheme-card mb-3">
@@ -98,9 +107,9 @@ document.addEventListener('DOMContentLoaded', function() {
                        ${benefit.applicationLink ? 'target="_blank"' : 'onclick="return false;"'}>
                         ${t.moreDetails}
                     </a>
-                    ${benefit.subscriptionRequired ? 
-                        `<span class="badge bg-warning text-dark">${t.subscriptionRequired}</span>` : 
-                        `<span class="badge bg-success">${t.freeAccess}</span>`}
+                    ${benefit.subscriptionRequired ?
+                `<span class="badge bg-warning text-dark">${t.subscriptionRequired}</span>` :
+                `<span class="badge bg-success">${t.freeAccess}</span>`}
                 </div>
             </div>
         `).join('');
@@ -116,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Make loadGovtBenefits available globally
     window.loadGovtBenefits = loadGovtBenefits;
-    
+
     // Only auto-load if we're not on the schemes page
     if (!window.location.pathname.toLowerCase().includes('govt sc.html')) {
         loadGovtBenefits();
